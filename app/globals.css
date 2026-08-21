@@ -44,6 +44,13 @@ button { font: inherit; }
 .animate-role-fade-in { animation: role-fade-in .4s ease-out both; }
 .gradient-border { position: relative; isolation: isolate; }
 .gradient-border::before { position: absolute; inset: -1px; z-index: -1; content: ''; border-radius: inherit; background: linear-gradient(100deg, var(--accent-a), var(--accent-b), var(--accent-a)); background-size: 220% 220%; animation: gradient-shift 6s ease infinite; }
+.gradient-border[href$="Himanshu-Dahiya-Resume.pdf"][download] { transition: transform .3s cubic-bezier(.2,.8,.2,1), filter .3s ease; }
+.gradient-border[href$="Himanshu-Dahiya-Resume.pdf"][download] > span { font-size: 0; transition: background .3s ease, color .3s ease; }
+.gradient-border[href$="Himanshu-Dahiya-Resume.pdf"][download] > span::before { content: "Download resume"; font-size: .75rem; }
+.gradient-border[href$="Himanshu-Dahiya-Resume.pdf"][download] > span > span { font-size: .75rem; transition: transform .3s ease; }
+.gradient-border[href$="Himanshu-Dahiya-Resume.pdf"][download]:hover { transform: translateY(-3px); filter: drop-shadow(0 8px 18px rgba(78,133,191,.28)); }
+.gradient-border[href$="Himanshu-Dahiya-Resume.pdf"][download]:hover > span { background: hsl(var(--surface)); color: #a9cfff; }
+.gradient-border[href$="Himanshu-Dahiya-Resume.pdf"][download]:hover > span > span { transform: translateY(2px); }
 
 .loading-screen { background: hsl(var(--bg)); }
 .loading-word { min-width: 8ch; }
@@ -124,6 +131,18 @@ button { font: inherit; }
 .footer-link { transition: color .2s ease; }
 .footer-link:hover { color: hsl(var(--text)); }
 
+.resume-page { height: 100svh; overflow: hidden; }
+.resume-toolbar { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1rem; min-height: 88px; padding: 1rem 2rem; border-bottom: 1px solid rgba(255,255,255,.1); background: hsla(var(--surface) / .92); backdrop-filter: blur(18px); }
+.resume-back, .resume-secondary-action, .resume-download { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; border-radius: 999px; font-size: .75rem; transition: border-color .25s ease, background .25s ease, color .25s ease, transform .25s ease; }
+.resume-back { justify-self: start; color: hsl(var(--muted)); }
+.resume-back:hover { color: hsl(var(--text)); transform: translateX(-2px); }
+.resume-toolbar > div:last-child { justify-self: end; }
+.resume-secondary-action { border: 1px solid hsl(var(--stroke)); padding: .7rem 1rem; color: hsl(var(--muted)); }
+.resume-secondary-action:hover { border-color: rgba(255,255,255,.28); color: hsl(var(--text)); }
+.resume-download { padding: .75rem 1.15rem; background: hsl(var(--text)); color: hsl(var(--bg)); }
+.resume-download:hover { transform: translateY(-1px); background: #dfeaff; }
+.resume-viewer { height: calc(100svh - 88px); width: 100%; background: #282a2d; }
+
 @media (min-width: 768px) {
   .hero-content > p.max-w-xl { width: max-content; max-width: none !important; white-space: nowrap !important; }
   .section-wrap { width: min(1200px, calc(100% - 5rem)); }
@@ -143,6 +162,10 @@ button { font: inherit; }
   .explore-item, .explore-item.col-a, .explore-item.col-b { position: relative; inset: auto; width: 100%; transform: none; border-radius: 16px; }
   .explore-item:nth-child(even) { margin-top: 2.5rem; }
   .marquee-word { -webkit-text-stroke-width: .7px; }
+  .resume-toolbar { grid-template-columns: auto 1fr; min-height: 72px; padding: .75rem 1rem; }
+  .resume-toolbar > div:nth-child(2), .resume-secondary-action { display: none; }
+  .resume-toolbar > div:last-child { justify-self: end; }
+  .resume-viewer { height: calc(100svh - 72px); }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
